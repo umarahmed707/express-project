@@ -16,6 +16,8 @@ function App() {
     }
 
   )
+
+  const API_URL ="https://student-management-backend-rosy-delta.vercel.app";
   const handleChange = (e) => {
     setFormdata({
       ...formData,
@@ -25,7 +27,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/student", formData)
+      const response = await axios.post(`${API_URL}/student`, formData)
       console.log(response.data)
       alert("Student Add Successfully")
       setRefresh((prev)=>prev + 1)

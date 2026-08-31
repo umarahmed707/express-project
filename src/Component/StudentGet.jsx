@@ -15,6 +15,7 @@ const StudentGet = ({refresh}) => {
         Rollnumber:"",
         age:""
     });
+  const API_URL ="https://student-management-backend-rosy-delta.vercel.app";
 
    
     const handleChange=(e)=>{
@@ -26,7 +27,7 @@ const StudentGet = ({refresh}) => {
     const getstudent = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:5000/student"
+                `${API_URL}/student`
             );
 
             console.log(response.data);
@@ -43,7 +44,7 @@ const StudentGet = ({refresh}) => {
 console.log(id)
 console.log(formData)
 
-            const response = await axios.put(`http://localhost:5000/student/${id}`,formData)
+            const response = await axios.put(`${API_URL}/student/${id}`,formData)
             console.log(response.data)
             sethandlemodel(false)
             getstudent()
@@ -86,7 +87,7 @@ sethandlemodel(true)
     const deletestudent = async(id)=>{
         // setSelectedID(student.id)
         try {
-            const response = await axios.delete(`http://localhost:5000/student/${id}`)
+            const response = await axios.delete(`${API_URL}/student/${id}`)
 
             setStudentget((prevstudent)=> 
             prevstudent.filter((student)=> student.id !== id)
